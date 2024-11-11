@@ -1,6 +1,6 @@
 ## 🙋🏻‍♀️ Introducing Myself
 
-![Brown and Gray Simple Personal LinkedIn Banner]([https://media.licdn.com/dms/image/v2/D5616AQFCX-WjVNmUHQ/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1727934076189?e=1736985600&v=beta&t=m-VgA_O7vhyJhyTIYOi6rkXNMc3b-osJ1LkmruVabyM])
+![Banner]([https://media.licdn.com/dms/image/v2/D5616AQFCX-WjVNmUHQ/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1727934076189?e=1736985600&v=beta&t=m-VgA_O7vhyJhyTIYOi6rkXNMc3b-osJ1LkmruVabyM])
 
 Hello, I'm Yash.
 Longitudinal Optimization Through Data
