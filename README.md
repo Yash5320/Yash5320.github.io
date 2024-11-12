@@ -4,7 +4,7 @@ Longitudinal Optimization Through Data
 
 ## 🙋‍♂️ Introducing Myself
 
-![Banner]([https://media.licdn.com/dms/image/v2/D5616AQFCX-WjVNmUHQ/profile-displaybackgroundimage-shrink_350_1400/profile-displaybackgroundimage-shrink_350_1400/0/1727934076189?e=1736985600&v=beta&t=m-VgA_O7vhyJhyTIYOi6rkXNMc3b-osJ1LkmruVabyM])
+![Alt text](https://raw.githubusercontent.com/Yash5320/Yash5320.github.io/main/Banner.png)
 
 Hello, I'm Yash.
 
