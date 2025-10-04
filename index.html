@@ -3,123 +3,592 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Name - Creative Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <title>YOUR_NAME_HERE | Data Scientist & Technologist</title>
+    
+    <!-- Google Fonts: Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome (for social icons) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #121212;
+            --surface-color: #1e1e1e;
+            --primary-color: #00aaff; /* A vibrant electric blue */
+            --text-primary: #e0e0e0;
+            --text-secondary: #a0a0a0;
+            --card-bg: rgba(30, 30, 30, 0.6);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        /* --- Base & Reset --- */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            background-image: radial-gradient(ellipse at top, #232323, var(--bg-color));
+            color: var(--text-primary);
+            font-family: var(--font-family);
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Custom Scrollbar */
+        body::-webkit-scrollbar {
+            width: 8px;
+        }
+        body::-webkit-scrollbar-track {
+            background: var(--bg-color);
+        }
+        body::-webkit-scrollbar-thumb {
+            background-color: var(--primary-color);
+            border-radius: 10px;
+            border: 2px solid var(--bg-color);
+        }
+
+        /* --- Typography --- */
+        h1, h2, h3, h4, h5, h6 {
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+            color: #fff;
+        }
+
+        h1 { font-size: 3.5rem; }
+        h2 { font-size: 2.5rem; }
+        h3 { font-size: 1.75rem; }
+        p { margin-bottom: 1rem; color: var(--text-secondary); }
+        a { color: var(--primary-color); text-decoration: none; transition: color 0.3s ease; }
+        a:hover { color: #fff; }
+
+        /* --- Layout --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 100px 0;
+            overflow: hidden;
+            perspective: 1000px; /* For 3D scroll animations */
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+            font-weight: 800;
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        /* --- Header --- */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            z-index: 1000;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease, backdrop-filter 0.3s ease;
+        }
+
+        .header.scrolled {
+            background-color: rgba(18, 18, 18, 0.8);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+        }
+        
+        .nav-link {
+            font-weight: 600;
+            position: relative;
+            color: var(--text-primary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after, .nav-link.active::after {
+            width: 100%;
+        }
+        
+        /* Mobile Nav */
+        .nav-toggle { display: none; }
+
+        /* --- Hero Section --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 1)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .hero h1 {
+            color: #fff;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+
+        .hero-tagline {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+        }
+
+        /* --- Cards (Projects & Tools) - 3D TILT --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            padding: 2rem;
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* GLARE REDUCED: Changed opacity from 0.15 to 0.07 and increased size for a softer effect */
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: radial-gradient(
+                300px circle at var(--mouse-x) var(--mouse-y), 
+                rgba(255, 255, 255, 0.07), 
+                transparent 80%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .card:hover {
+            box-shadow: 0 10px 40px rgba(0, 170, 255, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .card:hover::before {
+            opacity: 1;
+        }
+        
+        .card-content {
+            transform: translateZ(25px);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        
+        .card-title { color: #fff; transform: translateZ(20px); }
+        .card-body { flex-grow: 1; }
+        
+        .card-tech {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+            transform: translateZ(15px);
+        }
+        
+        .tech-badge {
+            background-color: rgba(0, 170, 255, 0.1);
+            color: var(--primary-color);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .card-links {
+            margin-top: 1.5rem;
+            display: flex;
+            gap: 1rem;
+            transform: translateZ(10px);
+        }
+        
+        .card-link { display: inline-flex; align-items: center; gap: 0.5rem; font-weight: 600; }
+        .card-link i { font-size: 1.2rem; }
+
+        /* --- Resume Section --- */
+        .resume-content { max-width: 800px; margin: 0 auto; text-align: center; }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--bg-color);
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(0, 170, 255, 0.3);
+            background-color: #33bbff;
+            color: var(--bg-color);
+        }
+        
+        .resume-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-top: 4rem; text-align: left; }
+        .highlight-item h4 { color: var(--primary-color); margin-bottom: 0.5rem; }
+        .highlight-item i { margin-right: 0.5rem; }
+
+        /* --- Fitness Section - INSANE TRANSITIONS --- */
+        .fitness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+        .fitness-gallery { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateZ(0); }
+        .fitness-slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1); z-index: 1; }
+        .fitness-slide.visible { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); z-index: 2; }
+        .fitness-slide.is-transitioning { clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%); }
+
+        /* --- Contact Section --- */
+        .contact-content { max-width: 600px; margin: 0 auto; text-align: center; }
+        .social-links { margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; }
+        .social-link { font-size: 2.5rem; color: var(--text-secondary); transition: transform 0.3s ease, color 0.3s ease; }
+        .social-link:hover { color: var(--primary-color); transform: scale(1.2) translateY(-5px); }
+
+        /* --- Footer --- */
+        footer { text-align: center; padding: 2rem 0; border-top: 1px solid var(--border-color); color: var(--text-secondary); }
+
+        /* --- Back to Top Button --- */
+        .back-to-top { position: fixed; bottom: 20px; right: 20px; background-color: var(--primary-color); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; z-index: 100; opacity: 0; visibility: hidden; transform: translateY(20px); transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease; }
+        .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
+        .back-to-top:hover { background-color: #33bbff; color: #fff; }
+        
+        /* --- Animations - 3D Flip-Up Scroll --- */
+        .animate-on-scroll { opacity: 0; transform: translateY(50px) rotateX(-20deg); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
+        .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0) rotateX(0); }
+        
+        /* --- Responsive Design --- */
+        @media (max-width: 900px) {
+            .fitness-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .fitness-gallery { order: -1; margin-bottom: 2rem; }
+        }
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+            section { padding: 80px 0; }
+            .nav-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
+            .nav-links { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background-color: var(--surface-color); flex-direction: column; justify-content: center; align-items: center; transition: right 0.4s ease-in-out; box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
+            .nav-links.active { right: 0; }
+        }
+    </style>
 </head>
 <body>
-
-    <header>
-        <div class="container">
-            <h1>Your Name</h1>
-            <p class="subtitle">Web Developer | Designer | Creator</p>
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="#home" class="nav-logo">YOUR_NAME_HERE</a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="#projects" class="nav-link">Projects</a></li>
+                    <li><a href="#tools" class="nav-link">Tools</a></li>
+                    <li><a href="#resume" class="nav-link">Resume</a></li>
+                    <li><a href="#fitness" class="nav-link">Fitness</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
         </div>
     </header>
 
-    <main class="container">
-
-        <!-- About Me Section -->
-        <section id="about" class="fade-in">
-            <h2>About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>Welcome to my digital space! I'm passionate about crafting beautiful and functional web experiences. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-                    <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                </div>
-                <div class="about-images">
-                    <img id="dynamic-image" src="images/about1.jpg" alt="A picture related to me or my work">
-                </div>
+    <main>
+        <section class="hero" id="home">
+            <div class="hero-content">
+                <h1 class="animate-on-scroll">Hello, I'm YOUR_NAME_HERE</h1>
+                <p class="hero-tagline animate-on-scroll" style="transition-delay: 100ms;">Data Scientist | Fitness Enthusiast</p>
+                <p class="animate-on-scroll">I transform complex data into actionable insights and build tools that empower decision-making. Below is a collection of my work and passions.</p>
             </div>
         </section>
 
-        <!-- Blog Section -->
-        <section id="blog" class="fade-in">
-            <h2>Latest Thoughts</h2>
-            <div class="card-container">
-                <!-- Blog Card 1 -->
-                <div class="card blog-card">
-                    <img src="images/blog1.jpg" alt="Blog Post 1 Thumbnail">
-                    <div class="card-content">
-                        <h3>Mastering Modern CSS Layouts</h3>
-                        <p>A deep dive into Flexbox and Grid for responsive designs.</p>
-                        <a href="#" target="_blank" class="btn">Read More →</a>
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Projects</h2>
+                <div class="grid">
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h3 class="card-title">Customer Churn Prediction</h3>
+                                <p>A machine learning model to predict telecom customer churn with 85% accuracy, enabling proactive retention strategies.</p>
+                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Scikit-learn</span><span class="tech-badge">Pandas</span><span class="tech-badge">Seaborn</span></div>
+                            </div>
+                            <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                        </div>
                     </div>
-                </div>
-                <!-- Blog Card 2 -->
-                <div class="card blog-card">
-                    <img src="images/blog2.jpg" alt="Blog Post 2 Thumbnail">
-                    <div class="card-content">
-                        <h3>JavaScript Essentials for Beginners</h3>
-                        <p>Understanding the core concepts to build interactive websites.</p>
-                        <a href="#" target="_blank" class="btn">Read More →</a>
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                             <div class="card-body">
+                                <h3 class="card-title">Sales Forecasting Dashboard</h3>
+                                <p>An interactive Tableau dashboard visualizing historical sales and forecasting future trends using time-series analysis.</p>
+                                 <div class="card-tech"><span class="tech-badge">Tableau</span><span class="tech-badge">SQL</span><span class="tech-badge">Python</span><span class="tech-badge">Prophet</span></div>
+                            </div>
+                            <div class="card-links"><a href="#" class="card-link"><i class="fas fa-external-link-alt"></i> Live Demo</a></div>
+                        </div>
                     </div>
-                </div>
-                <!-- Blog Card 3 -->
-                <div class="card blog-card">
-                    <img src="images/blog3.jpg" alt="Blog Post 3 Thumbnail">
-                    <div class="card-content">
-                        <h3>The Art of UI/UX Design</h3>
-                        <p>Principles for creating user-friendly and engaging interfaces.</p>
-                        <a href="#" target="_blank" class="btn">Read More →</a>
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h3 class="card-title">Deep Learning Image Classifier</h3>
+                                <p>A Convolutional Neural Network (CNN) trained to classify product images for automated inventory systems.</p>
+                                <div class="card-tech"><span class="tech-badge">TensorFlow</span><span class="tech-badge">Keras</span><span class="tech-badge">OpenCV</span></div>
+                            </div>
+                             <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="fade-in">
-            <h2>Featured Projects</h2>
-            <div class="card-container">
-                <!-- Project Card 1 -->
-                <div class="card project-card">
-                    <img src="images/project1.jpg" alt="Project 1 Thumbnail">
-                    <div class="card-content">
-                        <h3>E-commerce Platform UI</h3>
-                        <p>A sleek and modern user interface design for an online store.</p>
-                        <a href="#" target="_blank" class="btn">View Project →</a>
+        <section id="tools" style="background-color: var(--surface-color);">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Tools I've Built</h2>
+                <div class="grid">
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h3 class="card-title">DataCleaner CLI</h3>
+                                <p>A command-line tool to automate common data preprocessing tasks like handling missing values, removing duplicates, and standardizing formats.</p>
+                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Argparse</span><span class="tech-badge">Pandas</span></div>
+                            </div>
+                            <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                        </div>
                     </div>
-                </div>
-                <!-- Project Card 2 -->
-                <div class="card project-card">
-                    <img src="images/project2.jpg" alt="Project 2 Thumbnail">
-                    <div class="card-content">
-                        <h3>Interactive Data Dashboard</h3>
-                        <p>Visualizing complex data using JavaScript charting libraries.</p>
-                        <a href="#" target="_blank" class="btn">View Project →</a>
-                    </div>
-                </div>
-                <!-- Project Card 3 -->
-                <div class="card project-card">
-                    <img src="images/project3.jpg" alt="Project 3 Thumbnail">
-                    <div class="card-content">
-                        <h3>Personal Blog Website</h3>
-                        <p>A custom-built blog platform with a clean reading experience.</p>
-                        <a href="#" target="_blank" class="btn">View Project →</a>
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h3 class="card-title">MarketData API Wrapper</h3>
+                                <p>A lightweight Python wrapper to simplify fetching, cleaning, and structuring financial market data from public APIs for quantitative analysis.</p>
+                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Requests</span><span class="tech-badge">API</span></div>
+                            </div>
+                            <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section Placeholder (Optional) -->
-        <section id="contact" class="fade-in">
-             <h2>Contact Me</h2>
-             <p>Interested in collaborating? Send me a message!</p>
-             <p><em>(Add a contact form or email link here later)</em></p>
-             <a href="mailto:your.email@example.com" class="btn btn-primary">Email Me</a>
+        <section id="resume">
+            <div class="container resume-content">
+                <h2 class="section-title animate-on-scroll">My Resume</h2>
+                <p class="animate-on-scroll">For a detailed overview of my professional background, skills, and accomplishments, please download my full resume.</p>
+                <a href="resume.pdf" class="btn animate-on-scroll" download>Download PDF</a>
+                <div class="resume-highlights animate-on-scroll">
+                    <div class="highlight-item"><h4><i class="fas fa-briefcase"></i> Experience</h4><p><strong>Data Scientist</strong>, [Company Name]<br>Led projects in predictive modeling and data visualization, improving key business metrics.</p></div>
+                    <div class="highlight-item"><h4><i class="fas fa-graduation-cap"></i> Education</h4><p><strong>M.S. in Data Science</strong>, [University Name]<br>Specialized in machine learning and statistical analysis.</p></div>
+                    <div class="highlight-item"><h4><i class="fas fa-code"></i> Core Skills</h4><p>Python, SQL, R, TensorFlow, Scikit-learn, Tableau, AWS, Docker.</p></div>
+                </div>
+            </div>
         </section>
 
+        <section id="fitness" style="background-color: var(--surface-color);">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Fitness Journey</h2>
+                <div class="fitness-grid">
+                    <div class="fitness-gallery animate-on-scroll">
+                        <div class="fitness-slide" style="background-image: url('1.jpeg');"></div>
+                        <div class="fitness-slide" style="background-image: url('2.jpeg');"></div>
+                        <div class="fitness-slide" style="background-image: url('3.jpeg');"></div>
+                    </div>
+                    <div class="animate-on-scroll" style="transition-delay: 100ms;">
+                        <h3>Discipline in Data & Dumbbells</h3>
+                        <p>My passion for fitness mirrors my approach to data science. Both require consistency, a focus on fundamentals, and the drive for progressive improvement. I specialize in calisthenics and strength training, finding a unique balance between analytical thinking and physical expression.</p>
+                        <h4>Achievements:</h4>
+                        <p>Mastering complex movements like the <strong>strict bar muscle-up</strong> and achieving milestones like <strong>weighted dips with +45kg</strong> are testaments to this philosophy.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container contact-content">
+                <h2 class="section-title animate-on-scroll">Let's Connect</h2>
+                <p class="animate-on-scroll">I'm passionate about leveraging data to solve challenging problems. If you have an interesting project or opportunity, I'd love to hear from you.</p>
+                <div class="social-links animate-on-scroll">
+                    <a href="YOUR_LINKEDIN_URL" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="YOUR_GITHUB_URL" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2023 Your Name. All rights reserved.</p>
-            <!-- Add social media links here if desired -->
-        </div>
+        <div class="container"><p>&copy; 2024 YOUR_NAME_HERE. Crafted with passion and code.</p></div>
     </footer>
 
-    <script src="script.js"></script>
+    <a href="#home" class="back-to-top" id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
+
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const header = document.getElementById('header');
+        const navLinksContainer = document.getElementById('nav-links');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const navToggle = document.getElementById('nav-toggle');
+        const backToTopButton = document.getElementById('back-to-top');
+
+        // Header & Back to Top Button Scroll Effect
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+                backToTopButton.classList.add('visible');
+            } else {
+                header.classList.remove('scrolled');
+                backToTopButton.classList.remove('visible');
+            }
+        });
+
+        // Mobile Navigation
+        navToggle.addEventListener('click', () => { navLinksContainer.classList.toggle('active'); });
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                if (navLinksContainer.classList.contains('active')) {
+                    navLinksContainer.classList.remove('active');
+                }
+            });
+        });
+
+        // Active Nav Link on Scroll
+        const sections = document.querySelectorAll('section[id]');
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                if (pageYOffset >= section.offsetTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Scroll Animations using Intersection Observer
+        const animatedElements = document.querySelectorAll('.animate-on-scroll');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('is-visible');
+            });
+        }, { threshold: 0.1 });
+        animatedElements.forEach(el => observer.observe(el));
+
+
+        // Insane Fitness Gallery Logic
+        const slides = Array.from(document.querySelectorAll('.fitness-slide'));
+        if (slides.length > 0) {
+            let currentSlideIndex = 0;
+            slides[currentSlideIndex].classList.add('visible');
+            setInterval(() => {
+                const currentSlide = slides[currentSlideIndex];
+                const nextSlideIndex = (currentSlideIndex + 1) % slides.length;
+                const nextSlide = slides[nextSlideIndex];
+                
+                nextSlide.style.zIndex = parseInt(window.getComputedStyle(currentSlide).zIndex || 1) + 1;
+                nextSlide.classList.add('is-transitioning');
+
+                setTimeout(() => {
+                    currentSlide.classList.remove('visible');
+                    currentSlide.classList.remove('is-transitioning');
+                    currentSlide.style.zIndex = '';
+                    
+                    nextSlide.classList.remove('is-transitioning');
+                    nextSlide.classList.add('visible');
+
+                    currentSlideIndex = nextSlideIndex;
+                }, 1200);
+            }, 4000);
+        }
+
+        // --- 3D Interactive Card Tilt ---
+        const cards = document.querySelectorAll('.card');
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+
+                const rotateX = ((y - centerY) / centerY) * -8;
+                const rotateY = ((x - centerX) / centerX) * 8;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            });
+        });
+    });
+    </script>
 </body>
 </html>
