@@ -3,17 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOUR_NAME_HERE | Data Scientist & Technologist</title>
-    
-    <!-- Google Fonts: Plus Jakarta Sans -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <title>Yash's Portfolio</title>
 
     <!-- Font Awesome (for social icons) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Note: You might need to provide a valid path or CDN for Font Awesome -->
+    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"> -->
+    <link rel="stylesheet" href="css/all.min.css">
     
     <style>
+        /* plus-jakarta-sans-regular - latin */
+        @font-face {
+          font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+          font-family: 'Plus Jakarta Sans';
+          font-style: normal;
+          font-weight: 400;
+          src: url('../webfonts/plus-jakarta-sans-v12-latin-regular.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* plus-jakarta-sans-500 - latin */
+        @font-face {
+          font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+          font-family: 'Plus Jakarta Sans';
+          font-style: normal;
+          font-weight: 500;
+          src: url('../webfonts/plus-jakarta-sans-v12-latin-500.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* plus-jakarta-sans-600 - latin */
+        @font-face {
+          font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+          font-family: 'Plus Jakarta Sans';
+          font-style: normal;
+          font-weight: 600;
+          src: url('../webfonts/plus-jakarta-sans-v12-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* plus-jakarta-sans-700 - latin */
+        @font-face {
+          font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+          font-family: 'Plus Jakarta Sans';
+          font-style: normal;
+          font-weight: 700;
+          src: url('../webfonts/plus-jakarta-sans-v12-latin-700.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
+        /* plus-jakarta-sans-800 - latin */
+        @font-face {
+          font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+          font-family: 'Plus Jakarta Sans';
+          font-style: normal;
+          font-weight: 800;
+          src: url('../webfonts/plus-jakarta-sans-v12-latin-800.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+        }
         :root {
             --bg-color: #121212;
             --surface-color: #1e1e1e;
@@ -44,6 +81,11 @@
             line-height: 1.6;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Class to prevent scrolling when mobile nav is open */
+        body.no-scroll {
+            overflow: hidden;
         }
         
         /* Custom Scrollbar */
@@ -162,21 +204,46 @@
             width: 100%;
         }
         
-        /* Mobile Nav */
-        .nav-toggle { display: none; }
+        .nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
 
-        /* --- Hero Section --- */
+        /* --- Hero Section with Matrix Background --- */
         .hero {
+            position: relative;
             min-height: 100vh;
             display: flex;
             align-items: center;
             text-align: center;
-            background: linear-gradient(rgba(18, 18, 18, 0.8), rgba(18, 18, 18, 1)), url('https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=2070&auto=format&fit=crop') no-repeat center center/cover;
+            background-color: #000;
+            overflow: hidden;
+        }
+
+        #matrix-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
         
         .hero-content {
+            position: relative;
+            z-index: 2; /* Content must be above the canvas */
             max-width: 800px;
             margin: 0 auto;
+            background: rgba(18, 18, 18, 0.7);
+            padding: 2.5rem;
+            border-radius: 12px;
+            backdrop-filter: blur(5px);
+            border: 1px solid var(--border-color);
         }
         
         .hero h1 {
@@ -192,10 +259,10 @@
             margin-bottom: 2rem;
         }
 
-        /* --- Cards (Projects & Tools) - 3D TILT --- */
+        /* --- Cards (Projects & Tools) --- */
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
             gap: 2rem;
         }
         
@@ -211,7 +278,6 @@
             overflow: hidden;
         }
 
-        /* GLARE REDUCED: Changed opacity from 0.15 to 0.07 and increased size for a softer effect */
         .card::before {
             content: '';
             position: absolute;
@@ -301,7 +367,7 @@
         .highlight-item h4 { color: var(--primary-color); margin-bottom: 0.5rem; }
         .highlight-item i { margin-right: 0.5rem; }
 
-        /* --- Fitness Section - INSANE TRANSITIONS --- */
+        /* --- Fitness Section --- */
         .fitness-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
         .fitness-gallery { position: relative; width: 100%; aspect-ratio: 1 / 1; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateZ(0); }
         .fitness-slide { position: absolute; width: 100%; height: 100%; background-size: cover; background-position: center; clip-path: polygon(0 0, 0 0, 0 100%, 0 100%); transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1); z-index: 1; }
@@ -322,29 +388,124 @@
         .back-to-top.visible { opacity: 1; visibility: visible; transform: translateY(0); }
         .back-to-top:hover { background-color: #33bbff; color: #fff; }
         
-        /* --- Animations - 3D Flip-Up Scroll --- */
+        /* --- Animations --- */
         .animate-on-scroll { opacity: 0; transform: translateY(50px) rotateX(-20deg); transition: opacity 0.8s ease-out, transform 0.8s cubic-bezier(0.23, 1, 0.32, 1); }
         .animate-on-scroll.is-visible { opacity: 1; transform: translateY(0) rotateX(0); }
         
-        /* --- Responsive Design --- */
+        /* --- Responsive Design (Consolidated) --- */
         @media (max-width: 900px) {
-            .fitness-grid { grid-template-columns: 1fr; gap: 2rem; }
-            .fitness-gallery { order: -1; margin-bottom: 2rem; }
+            .fitness-grid { 
+                grid-template-columns: 1fr; 
+                gap: 2rem; 
+            }
+            .fitness-gallery { 
+                order: -1; 
+                margin-bottom: 2rem; 
+            }
         }
+
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
             h2 { font-size: 2rem; }
             section { padding: 80px 0; }
-            .nav-toggle { display: block; background: none; border: none; color: #fff; font-size: 1.5rem; cursor: pointer; z-index: 1001; }
-            .nav-links { position: fixed; top: 0; right: -100%; width: 70%; height: 100vh; background-color: var(--surface-color); flex-direction: column; justify-content: center; align-items: center; transition: right 0.4s ease-in-out; box-shadow: -5px 0 15px rgba(0,0,0,0.2); }
-            .nav-links.active { right: 0; }
+            
+            .nav-toggle { 
+                display: block; 
+            }
+            .nav-links { 
+                position: fixed; 
+                top: 0; 
+                right: -100%; 
+                width: 70%; 
+                max-width: 300px;
+                height: 100vh; 
+                background-color: var(--surface-color); 
+                flex-direction: column; 
+                justify-content: center; 
+                align-items: center; 
+                transition: right 0.4s ease-in-out; 
+                box-shadow: -5px 0 15px rgba(0,0,0,0.2); 
+            }
+            .nav-links.active { 
+                right: 0; 
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 { font-size: 2.2rem; }
+            h2 { font-size: 1.8rem; }
+            section { padding: 60px 0; }
+            .container { padding: 0 15px; }
+        }
+
+        /* --- Glitch Effect --- */
+        /* --- Glitch Effect (Thematic) --- */
+        .glitch {
+          position: relative;
+          display: inline-block; /* Ensures transforms work correctly */
+          font-weight: bold;
+          color: #fff;
+          letter-spacing: 3px;
+          animation: glitch-skew 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::before,
+        .glitch::after {
+          content: attr(data-text);
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+        }
+
+        .glitch::before {
+          left: 2px;
+          text-shadow: -2px 0 var(--primary-color);
+          clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+          animation: glitch-anim1 2s infinite linear alternate-reverse;
+        }
+
+        .glitch::after {
+          left: -2px;
+          text-shadow: 2px 0 var(--text-secondary);
+          clip-path: polygon(0 65%, 100% 65%, 100% 100%, 0 100%);
+          animation: glitch-anim2 3s infinite linear alternate-reverse;
+        }
+
+        @keyframes glitch-anim1 {
+          0% { clip-path: polygon(0 15%, 100% 15%, 100% 30%, 0 30%); }
+          20% { clip-path: polygon(0 40%, 100% 40%, 100% 50%, 0 50%); }
+          40% { clip-path: polygon(0 2%, 100% 2%, 100% 18%, 0 18%); }
+          60% { clip-path: polygon(0 60%, 100% 60%, 100% 70%, 0 70%); }
+          80% { clip-path: polygon(0 80%, 100% 80%, 100% 95%, 0 95%); }
+          100% { clip-path: polygon(0 55%, 100% 55%, 100% 65%, 0 65%); }
+        }
+
+        @keyframes glitch-anim2 {
+          0% { clip-path: polygon(0 75%, 100% 75%, 100% 100%, 0 100%); }
+          20% { clip-path: polygon(0 5%, 100% 5%, 100% 25%, 0 25%); }
+          40% { clip-path: polygon(0 45%, 100% 45%, 100% 55%, 0 55%); }
+          60% { clip-path: polygon(0 85%, 100% 85%, 100% 99%, 0 99%); }
+          80% { clip-path: polygon(0 40%, 100% 40%, 100% 60%, 0 60%); }
+          100% { clip-path: polygon(0 20%, 100% 20%, 100% 35%, 0 35%); }
+        }
+        
+        @keyframes glitch-skew {
+            0% { transform: skewX(0); }
+            95% { transform: skewX(0); }
+            96% { transform: skewX(10deg); }
+            97% { transform: skewX(0); }
+            98% { transform: skewX(-10deg); }
+            99% { transform: skewX(0); }
+            100% { transform: skewX(0); }
         }
     </style>
 </head>
 <body>
     <header class="header" id="header">
         <div class="container navbar">
-            <a href="#home" class="nav-logo">YOUR_NAME_HERE</a>
+            <a href="#home" class="nav-logo">Yash Deole</a>
             <nav>
                 <ul class="nav-links" id="nav-links">
                     <li><a href="#projects" class="nav-link">Projects</a></li>
@@ -359,10 +520,11 @@
     </header>
 
     <main>
-        <section class="hero" id="home">
+<section class="hero" id="home">
+            <canvas id="matrix-canvas"></canvas>
             <div class="hero-content">
-                <h1 class="animate-on-scroll">Hello, I'm YOUR_NAME_HERE</h1>
-                <p class="hero-tagline animate-on-scroll" style="transition-delay: 100ms;">Data Scientist | Fitness Enthusiast</p>
+                <h1 class="animate-on-scroll">Hello, I'm <span class="glitch" data-text="Yash Deole">Yash Deole</span></h1>
+                <p class="hero-tagline animate-on-scroll" style="transition-delay: 100ms;">Data Scientist | AI Developer | Fitness Enthusiast</p>
                 <p class="animate-on-scroll">I transform complex data into actionable insights and build tools that empower decision-making. Below is a collection of my work and passions.</p>
             </div>
         </section>
@@ -374,31 +536,32 @@
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <div class="card-body">
-                                <h3 class="card-title">Customer Churn Prediction</h3>
-                                <p>A machine learning model to predict telecom customer churn with 85% accuracy, enabling proactive retention strategies.</p>
-                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Scikit-learn</span><span class="tech-badge">Pandas</span><span class="tech-badge">Seaborn</span></div>
+                                <h3 class="card-title">Fall Detection System using LLaVa</h3>
+                                <p>Combined Large Language and Vision Assistant (LLaVa) and Extreme Gradient Boosting (XGBoost) for Fall Detection and Classification which analyzes both image and sensor data</p>
+                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Scikit-learn</span><span class="tech-badge">Pandas</span><span class="tech-badge">Seaborn</span><span class="tech-badge">UP-Fall Dataset</span></div>
                             </div>
-                            <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                            <div class="card-links"><a href="https://github.com/Yash5320/Image-Classification-using-LLaVa" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a></div>
                         </div>
                     </div>
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                              <div class="card-body">
-                                <h3 class="card-title">Sales Forecasting Dashboard</h3>
+                                <h3 class="card-title">Hackathon: Traveling Student Problem</h3>
                                 <p>An interactive Tableau dashboard visualizing historical sales and forecasting future trends using time-series analysis.</p>
                                  <div class="card-tech"><span class="tech-badge">Tableau</span><span class="tech-badge">SQL</span><span class="tech-badge">Python</span><span class="tech-badge">Prophet</span></div>
                             </div>
-                            <div class="card-links"><a href="#" class="card-link"><i class="fas fa-external-link-alt"></i> Live Demo</a></div>
+                            <div class="card-links"><a href="http://yashdeole.me/Travelling-Student-Problem/" class="card-link" target="_blank"><i class="fas fa-external-link-alt" target="_blank"></i> Live Demo</a><a href="https://devpost.com/software/the-traveling-student-problem" class="card-link" target="_blank"><i class="fas fa-external-link-alt"></i>Hackathon</a></div>
+ 
                         </div>
                     </div>
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <div class="card-body">
-                                <h3 class="card-title">Deep Learning Image Classifier</h3>
-                                <p>A Convolutional Neural Network (CNN) trained to classify product images for automated inventory systems.</p>
-                                <div class="card-tech"><span class="tech-badge">TensorFlow</span><span class="tech-badge">Keras</span><span class="tech-badge">OpenCV</span></div>
+                                <h3 class="card-title">Global Childhood Immunization: Inequality Patterns and Determinants</h3>
+                                <p>This project investigates global patterns of childhood immunization coverage, focusing on identifying inequalities and understanding their socio-demographic and spatio-temporal determinants. </p>
+                                <div class="card-tech"><span class="tech-badge">R</span><span class="tech-badge">Multivariable Statistics</span><span class="tech-badge">WHO Data</span></div>
                             </div>
-                             <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                             <div class="card-links"><a href="https://github.com/Yash5320/Childhood_Immunization" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a><a href="https://prezi.com/view/z7tPVH25avFMDa5GJLQi/" class="card-link" target="_blank"><i class="fas fa-external-link-alt"></i>Presentation</a></div>
                         </div>
                     </div>
                 </div>
@@ -412,54 +575,64 @@
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <div class="card-body">
-                                <h3 class="card-title">DataCleaner CLI</h3>
-                                <p>A command-line tool to automate common data preprocessing tasks like handling missing values, removing duplicates, and standardizing formats.</p>
-                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Argparse</span><span class="tech-badge">Pandas</span></div>
+                                <h3 class="card-title">UCI Court Booking Bot</h3>
+                                <p>A command-line tool to automate booking Pickleball Courts at the Anteater Recreation Center</p>
+                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Argparse</span><span class="tech-badge">Selenium</span><span class="tech-badge">Shell</span></div>
                             </div>
-                            <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                            <div class="card-links"><a href="https://github.com/Yash5320/UCI_Pickleball_Book" class="card-link" target="_blank"><i class="fab fa-github"></i> GitHub</a></div>
                         </div>
                     </div>
                     <div class="card animate-on-scroll">
                         <div class="card-content">
                             <div class="card-body">
-                                <h3 class="card-title">MarketData API Wrapper</h3>
-                                <p>A lightweight Python wrapper to simplify fetching, cleaning, and structuring financial market data from public APIs for quantitative analysis.</p>
-                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Requests</span><span class="tech-badge">API</span></div>
+                                <h3 class="card-title">Universal Stream & Subtitle Finder</h3>
+                                <p>A userscript designed to detect and manage media streams and subtitle files on web pages.</p>
+                                <div class="card-tech"><span class="tech-badge">Javascript</span><span class="tech-badge">YTDLP</span><span class="tech-badge">Userscript</span></div>
                             </div>
-                            <div class="card-links"><a href="#" class="card-link"><i class="fab fa-github"></i> GitHub</a></div>
+                            <div class="card-links"><a href="#" class="card-link"><i class="fas fa-external-link-alt" target="_blank"></i> OpenUserJS</a></div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="resume">
-            <div class="container resume-content">
-                <h2 class="section-title animate-on-scroll">My Resume</h2>
-                <p class="animate-on-scroll">For a detailed overview of my professional background, skills, and accomplishments, please download my full resume.</p>
-                <a href="resume.pdf" class="btn animate-on-scroll" download>Download PDF</a>
-                <div class="resume-highlights animate-on-scroll">
-                    <div class="highlight-item"><h4><i class="fas fa-briefcase"></i> Experience</h4><p><strong>Data Scientist</strong>, [Company Name]<br>Led projects in predictive modeling and data visualization, improving key business metrics.</p></div>
-                    <div class="highlight-item"><h4><i class="fas fa-graduation-cap"></i> Education</h4><p><strong>M.S. in Data Science</strong>, [University Name]<br>Specialized in machine learning and statistical analysis.</p></div>
-                    <div class="highlight-item"><h4><i class="fas fa-code"></i> Core Skills</h4><p>Python, SQL, R, TensorFlow, Scikit-learn, Tableau, AWS, Docker.</p></div>
-                </div>
-            </div>
-        </section>
 
+<section id="resume">
+    <div class="container resume-content">
+        <h2 class="section-title animate-on-scroll">My Resume</h2>
+        <p class="animate-on-scroll">For a detailed overview of my professional background, skills, and accomplishments, please download my full resume.</p>
+        <a href="resume.pdf" class="btn animate-on-scroll" target="_blank">View PDF</a>
+        <div class="resume-highlights animate-on-scroll">
+            <div class="highlight-item">
+                <h4><i class="fas fa-briefcase"></i> Experience</h4>
+                <p><strong>ML Engineer</strong>, Calit<br>Building Deep Learning Models to map thermal changes in a simulated environment.</p>
+            </div>
+            <div class="highlight-item">
+                <h4><i class="fas fa-graduation-cap"></i> Education</h4>
+                <p><strong>Masters in Data Science</strong>, UCI<br>Specialized in machine learning and statistical analysis.</p>
+            </div>
+            <div class="highlight-item">
+                <h4><i class="fas fa-code"></i> Core Skills</h4>
+                <p>Python, SQL, R, TensorFlow, Scikit-learn, Tableau, AWS, Docker, PyTorch.</p>
+            </div>
+        </div>
+    </div>
+</section>
         <section id="fitness" style="background-color: var(--surface-color);">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Fitness Journey</h2>
                 <div class="fitness-grid">
                     <div class="fitness-gallery animate-on-scroll">
-                        <div class="fitness-slide" style="background-image: url('1.jpeg');"></div>
-                        <div class="fitness-slide" style="background-image: url('2.jpeg');"></div>
-                        <div class="fitness-slide" style="background-image: url('3.jpeg');"></div>
+                        <!-- Add your actual image paths here -->
+                        <div class="fitness-slide" style="background-image: url('1.png');"></div>
+                        <div class="fitness-slide" style="background-image: url('2.jpg');"></div>
+                        <div class="fitness-slide" style="background-image: url('3.png');"></div>
                     </div>
                     <div class="animate-on-scroll" style="transition-delay: 100ms;">
                         <h3>Discipline in Data & Dumbbells</h3>
                         <p>My passion for fitness mirrors my approach to data science. Both require consistency, a focus on fundamentals, and the drive for progressive improvement. I specialize in calisthenics and strength training, finding a unique balance between analytical thinking and physical expression.</p>
                         <h4>Achievements:</h4>
-                        <p>Mastering complex movements like the <strong>strict bar muscle-up</strong> and achieving milestones like <strong>weighted dips with +45kg</strong> are testaments to this philosophy.</p>
+                        <p>Mastering complex movements like the <strong>muscle-up</strong> and achieving milestones like <strong>weighted dips with +50kg</strong> are testaments to this philosophy.</p>
                     </div>
                 </div>
             </div>
@@ -470,21 +643,20 @@
                 <h2 class="section-title animate-on-scroll">Let's Connect</h2>
                 <p class="animate-on-scroll">I'm passionate about leveraging data to solve challenging problems. If you have an interesting project or opportunity, I'd love to hear from you.</p>
                 <div class="social-links animate-on-scroll">
-                    <a href="YOUR_LINKEDIN_URL" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-                    <a href="YOUR_GITHUB_URL" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://linkedin.com/in/hi-yash-deole" target="_blank" class="social-link" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/Yash5320" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
                 </div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="container"><p>&copy; 2024 YOUR_NAME_HERE. Crafted with passion and code.</p></div>
-    </footer>
+
 
     <a href="#home" class="back-to-top" id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
 
     <script>
     document.addEventListener('DOMContentLoaded', function() {
+        const body = document.body;
         const header = document.getElementById('header');
         const navLinksContainer = document.getElementById('nav-links');
         const navLinks = document.querySelectorAll('.nav-link');
@@ -502,12 +674,17 @@
             }
         });
 
-        // Mobile Navigation
-        navToggle.addEventListener('click', () => { navLinksContainer.classList.toggle('active'); });
+        // Mobile Navigation with Body Scroll Lock
+        navToggle.addEventListener('click', () => { 
+            const isActive = navLinksContainer.classList.toggle('active');
+            body.classList.toggle('no-scroll', isActive);
+        });
+
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (navLinksContainer.classList.contains('active')) {
                     navLinksContainer.classList.remove('active');
+                    body.classList.remove('no-scroll');
                 }
             });
         });
@@ -539,7 +716,7 @@
         animatedElements.forEach(el => observer.observe(el));
 
 
-        // Insane Fitness Gallery Logic
+        // Fitness Gallery Logic
         const slides = Array.from(document.querySelectorAll('.fitness-slide'));
         if (slides.length > 0) {
             let currentSlideIndex = 0;
@@ -565,7 +742,7 @@
             }, 4000);
         }
 
-        // --- 3D Interactive Card Tilt ---
+        // 3D Interactive Card Tilt
         const cards = document.querySelectorAll('.card');
         cards.forEach(card => {
             card.addEventListener('mousemove', (e) => {
@@ -576,10 +753,10 @@
                 const centerX = rect.width / 2;
                 const centerY = rect.height / 2;
 
-                const rotateX = ((y - centerY) / centerY) * -8;
-                const rotateY = ((x - centerX) / centerX) * 8;
+                const rotateX = ((y - centerY) / centerY) * -16;
+                const rotateY = ((x - centerX) / centerX) * 16;
                 
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.05, 1.05, 1.05)`;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.06, 1.06, 1.06)`;
                 card.style.setProperty('--mouse-x', `${x}px`);
                 card.style.setProperty('--mouse-y', `${y}px`);
             });
@@ -589,6 +766,59 @@
             });
         });
     });
+    </script>
+    
+    <!-- SCRIPT FOR MATRIX BACKGROUND -->
+    <script>
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+
+        let width = canvas.width = window.innerWidth;
+        let height = canvas.height = window.innerHeight;
+
+        const devnagri = 'अआइईउऊऋॠऌॡएऐओऔकखगघचछजझटठडढतथदधनऩपफबभमयरलकवशषहलळ';
+        //const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        //const nums = '0123456789';
+        const characters = devnagri ;
+
+        const fontSize = 16;
+        let columns = Math.floor(width / fontSize);
+
+        const drops = [];
+        for (let i = 0; i < columns; i++) {
+            drops[i] = 1;
+        }
+
+        function draw() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, width, height);
+
+            ctx.fillStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary-color') || '#00aaff';
+            ctx.font = fontSize + 'px monospace';
+
+            for (let i = 0; i < columns; i++) {
+                const text = characters.charAt(Math.floor(Math.random() * characters.length));
+                ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+                if (drops[i] * fontSize > height && Math.random() > 0.975) {
+                    drops[i] = 0;
+                }
+                drops[i]++;
+            }
+        }
+
+        const matrixInterval = setInterval(draw, 33);
+
+        window.addEventListener('resize', () => {
+            width = canvas.width = window.innerWidth;
+            height = canvas.height = window.innerHeight;
+            columns = Math.floor(width / fontSize);
+            for (let i = 0; i < columns; i++) {
+                drops[i] = 1;
+            }
+        });
+    }
     </script>
 </body>
 </html>
