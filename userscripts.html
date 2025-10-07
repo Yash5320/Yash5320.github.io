@@ -1,0 +1,83 @@
+<!-- userscripts.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yash's Userscripts</title>
+    <link rel="stylesheet" href="css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header" id="header">
+        <div class="container navbar">
+            <a href="index.html" class="nav-logo">Yash Deole</a>
+            <nav>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="userscripts.html" class="nav-link active">Userscripts</a></li>
+                    <li><a href="index.html#tools" class="nav-link">Tools</a></li>
+                    <li><a href="index.html#resume" class="nav-link">Resume</a></li>
+                    <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
+        </div>
+    </header>
+
+    <main>
+        <!-- This is a placeholder section to create space at the top -->
+        <section style="padding-top: 150px; padding-bottom: 0;"></section>
+
+        <section id="userscripts" style="padding-top: 0;">
+            <div class="container">
+                <h2 class="section-title animate-on-scroll">Userscripts</h2>
+                
+                <!-- === MODIFIED SECTION STARTS HERE === -->
+                <div style="text-align: center; max-width: 700px; margin: -2rem auto 4rem auto;">
+                    <p class="animate-on-scroll">These are lightweight browser scripts that modify webpages to add new features. To use them, you need a userscript manager. I recommend <strong>Violentmonkey</strong> as it is a powerful and fully open-source option.</p>
+                    <a href="https://violentmonkey.github.io/" class="btn animate-on-scroll" target="_blank" rel="noopener noreferrer" style="transform: scale(0.9); margin-top: 1rem;">
+                        <i class="fas fa-download" style="margin-right: 8px;"></i> Get Violentmonkey
+                    </a>
+                </div>
+                <!-- === MODIFIED SECTION ENDS HERE === -->
+
+                <div class="grid">
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h3 class="card-title">IMDB Streamer</h3>
+                                <p>Enhances IMDB by searching for and embedding available streaming options directly into the movie or TV show's page.</p>
+                                <div class="card-tech"><span class="tech-badge">JavaScript</span><span class="tech-badge">Userscript</span></div>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://raw.githubusercontent.com/Yash5320/Userscripts/main/IMDB%20Streamer/imdb-streamer.user.js" class="card-link" target="_blank"><i class="fas fa-download"></i> Install Script</a>
+                                <a href="https://github.com/Yash5320/Userscripts/blob/main/IMDB%20Streamer/imdb-streamer.user.js" class="card-link" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card animate-on-scroll">
+                        <div class="card-content">
+                            <div class="card-body">
+                                <h3 class="card-title">M3U8 Finder</h3>
+                                <p>A developer tool that scans network requests to find and list M3U8 video stream playlists, making it easy to grab stream URLs.</p>
+                                <div class="card-tech"><span class="tech-badge">JavaScript</span><span class="tech-badge">Userscript</span></div>
+                            </div>
+                            <div class="card-links">
+                                <a href="https://raw.githubusercontent.com/Yash5320/Userscripts/main/M3U8_Finder/m3u8-finder.user.js" class="card-link" target="_blank"><i class="fas fa-download"></i> Install Script</a>
+                                <a href="https://github.com/Yash5320/Userscripts/blob/main/M3U8_Finder/m3u8-finder.user.js" class="card-link" target="_blank"><i class="fab fa-github"></i> View Code</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <a href="#" class="back-to-top" id="back-to-top" title="Back to Top"><i class="fas fa-arrow-up"></i></a>
+
+    <!-- This page only needs the main, shared script -->
+    <script src="js/main.js" defer></script>
+</body>
+</html>
