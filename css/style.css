@@ -227,39 +227,156 @@ section {
     margin-bottom: 2rem;
 }
 
+/* css/style.css */
+
+/* --- PROJECTS CAROUSEL --- */
+.projects-carousel {
+    position: relative;
+    /* KEY FIX: Set a max-width and center it. */
+    /* This physically prevents a 4th card from ever fitting. */
+    max-width: 1050px;
+    margin: 0 auto; 
+}
+
+.carousel-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(30, 30, 30, 0.7);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s ease, transform 0.3s ease, border-color 0.3s ease;
+}
+
+.carousel-arrow:hover {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: var(--bg-color);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.carousel-arrow.prev {
+    /* Position arrow outside the slider area */
+    left: -60px; 
+}
+
+.carousel-arrow.next {
+    /* Position arrow outside the slider area */
+    right: -60px; 
+}
+
+.carousel-arrow.disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.projects-slider {
+    overflow: hidden;
+    width: 100%;
+Padding: 20px; 
+}
+
+.projects-track {
+    display: flex;
+    gap: 2rem;
+    transition: transform 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+#projects .card {
+    flex: 0 0 calc((100% / 3) - (4rem / 3));
+    min-width: 290px;
+}
+
+
+
+/* --- RESPONSIVE ADJUSTMENTS for Carousel --- */
+@media (max-width: 1200px) {
+    .projects-carousel {
+        /* On smaller screens, allow the carousel to be closer to the edges */
+        margin: 0 40px;
+    }
+    .carousel-arrow.prev {
+        left: -50px; 
+    }
+    .carousel-arrow.next {
+        right: -50px; 
+    }
+}
+
+@media (max-width: 1024px) {
+    #projects .card {
+        flex: 0 0 calc((100% / 2) - (2rem / 2));
+    }
+}
+
+@media (max-width: 768px) {
+    #projects .card {
+        flex: 0 0 100%;
+    }
+    .projects-carousel {
+        /* Allow arrows to sit closer on mobile */
+        margin: 0 25px;
+    }
+    .carousel-arrow.prev {
+        left: -35px;
+    }
+    .carousel-arrow.next {
+        right: -35px;
+    }
+}
+/* css/style.css */
+
 /* --- CARDS & GRID --- */
 .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
     gap: 2rem;
 }
+
 .card {
     background-color: var(--card-bg);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     backdrop-filter: blur(10px);
     padding: 2rem;
-    transform-style: preserve-3d;
-    transition: transform 0.4s ease-out, box-shadow 0.3s ease, border-color 0.3s ease;
     position: relative;
-    overflow: hidden;
+    /* KEY FIX 1: Re-add overflow: hidden to clip the ribbon */
+    overflow: hidden; 
+    /* The card itself is now a 3D space for its children */
+    transform-style: preserve-3d;
+    /* Only transition effects that apply directly to the card */
+    transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
+
 .card-badge {
+    /* KEY FIX 2: Precise positioning and styling for the ribbon */
     position: absolute;
     top: 18px;
     right: -30px;
     width: 120px;
+    padding: 5px 10px;
     background-color: var(--primary-color);
     color: var(--bg-color);
-    padding: 5px 10px;
     font-size: 0.8rem;
     font-weight: 700;
-    text-transform: uppercase;
+    letter-spacing: 0.05em;
     text-align: center;
+    text-transform: uppercase;
     transform: rotate(45deg);
-    z-index: 3;
+    z-index: 2; /* Sits above content but below the radial gradient */
     box-shadow: 0 2px 5px rgba(0,0,0,0.3);
 }
+
 .card::before {
     content: '';
     position: absolute;
@@ -269,21 +386,28 @@ section {
     opacity: 0;
     transition: opacity 0.4s ease;
     pointer-events: none;
-    z-index: 1;
+    z-index: 3; /* Radial gradient goes on top of everything */
 }
+
 .card:hover {
-    box-shadow: 0 10px 40px rgba(0, 170, 255, 0.2);
-    border-color: var(--primary-color);
+    border-color: var(--border-color);
+    box-shadow: 0 10px 40px rgba(0, 170, 255, 0.2), 0 0 0 2px var(--primary-color) inset;
 }
+
 .card:hover::before {
     opacity: 1;
 }
+
 .card-content {
+    /* This inner element now handles the 3D transform */
     transform: translateZ(25px);
     display: flex;
     flex-direction: column;
     height: 100%;
+    /* Add a transition for the tilt effect */
+    transition: transform 0.2s ease-out;
 }
+
 .card-title { color: #fff; transform: translateZ(20px); }
 .card-body { flex-grow: 1; }
 .card-tech {

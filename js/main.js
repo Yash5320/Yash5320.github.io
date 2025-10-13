@@ -1,5 +1,3 @@
-// js/main.js
-
 document.addEventListener('DOMContentLoaded', function() {
     const body = document.body;
     const header = document.getElementById('header');
@@ -81,13 +79,15 @@ document.addEventListener('DOMContentLoaded', function() {
             const rotateX = ((y - centerY) / centerY) * -16;
             const rotateY = ((x - centerX) / centerX) * 16;
             
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.06, 1.06, 1.06)`;
+            // --- FIX --- Removed the scale3d() function from this line
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
             card.style.setProperty('--mouse-x', `${x}px`);
             card.style.setProperty('--mouse-y', `${y}px`);
         });
 
         card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
+            // --- FIX --- Removed the scale3d() function from this line as well
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
         });
     });
 });

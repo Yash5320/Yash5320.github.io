@@ -1,4 +1,3 @@
-<!-- index.html (Corrected Version with Email) -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,8 +17,8 @@
                     <li><a href="userscripts.html" class="nav-link">Userscripts</a></li>
                     <li><a href="#tools" class="nav-link">Tools</a></li>
                     <li><a href="#resume" class="nav-link">Resume</a></li>
-                    <li><a href="#fitness" class="nav-link">Fitness</a></li>
                     <li><a href="#contact" class="nav-link">Contact</a></li>
+                    <li><a href="#fitness" class="nav-link">Fitness</a></li>
                 </ul>
             </nav>
             <button class="nav-toggle" id="nav-toggle" aria-label="Menu"><i class="fas fa-bars"></i></button>
@@ -36,41 +35,62 @@
             </div>
         </section>
 
+        <!-- === MODIFIED PROJECTS SECTION === -->
         <section id="projects">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Projects</h2>
-                <div class="grid">
-                     <div class="card animate-on-scroll">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <h3 class="card-title">Fall Detection System using LLaVa</h3>
-                                <p>Combined Large Language and Vision Assistant (LLaVa) and Extreme Gradient Boosting (XGBoost) for Fall Detection and Classification which analyzes both image and sensor data</p>
-                                <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Scikit-learn</span><span class="tech-badge">Pandas</span><span class="tech-badge">Seaborn</span><span class="tech-badge">UP-Fall Dataset</span></div>
+                <div class="projects-carousel">
+                    <button class="carousel-arrow prev" id="prev-project" aria-label="Previous project">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <div class="projects-slider">
+                        <div class="projects-track">
+                             <div class="card animate-on-scroll">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Fall Detection System using LLaVa</h3>
+                                        <p>Combined Large Language and Vision Assistant (LLaVa) and Extreme Gradient Boosting (XGBoost) for Fall Detection and Classification which analyzes both image and sensor data</p>
+                                        <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Scikit-learn</span><span class="tech-badge">Pandas</span><span class="tech-badge">Seaborn</span><span class="tech-badge">UP-Fall Dataset</span></div>
+                                    </div>
+                                    <div class="card-links"><a href="https://github.com/Yash5320/Image-Classification-using-LLaVa" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a></div>
+                                </div>
                             </div>
-                            <div class="card-links"><a href="https://github.com/Yash5320/Image-Classification-using-LLaVa" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a></div>
+                            <div class="card animate-on-scroll">
+                                <div class="card-badge">Winner</div>
+                                <div class="card-content">
+                                     <div class="card-body">
+                                        <h3 class="card-title">Hackathon: Traveling Student Problem</h3>
+                                        <p>Our tool provides an optimized route planner designed to help users navigate multiple stops efficiently. By using geolocation data, it calculates the best possible route, minimizing travel time and distance.</p>
+                                         <div class="card-tech"><span class="tech-badge">OpenStreetView</span><span class="tech-badge">Melissa API</span><span class="tech-badge">Python</span></div>
+                                    </div>
+                                    <div class="card-links"><a href="http://yashdeole.me/Travelling-Student-Problem/" class="card-link" target="_blank"><i class="fas fa-external-link-alt" target="_blank"></i> Live Demo</a><a href="https://devpost.com/software/the-traveling-student-problem" class="card-link" target="_blank"><i class="fas fa-external-link-alt"></i>Hackathon</a></div>
+                                </div>
+                            </div>
+                            <div class="card animate-on-scroll">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Global Childhood Immunization</h3>
+                                        <p>This project investigates global patterns of childhood immunization coverage, focusing on identifying inequalities and understanding their determinants. </p>
+                                        <div class="card-tech"><span class="tech-badge">R</span><span class="tech-badge">Multivariable Statistics</span><span class="tech-badge">WHO Data</span></div>
+                                    </div>
+                                     <div class="card-links"><a href="https://github.com/Yash5320/Childhood_Immunization" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a><a href="https://prezi.com/view/z7tPVH25avFMDa5GJLQi/" class="card-link" target="_blank"><i class="fas fa-external-link-alt"></i>Presentation</a></div>
+                                </div>
+                            </div>
+<div class="card animate-on-scroll">
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <h3 class="card-title">Predictive Modeling for Temperature Changes in Fluid-Passed Cylinders</h3>
+                                        <p>Developed machine learning models to predict temperature changes in a cylinder with fluid flow, aiming for faster predictions compared to traditional PyAnsys simulations.</p>
+                                        <div class="card-tech"><span class="tech-badge">Python</span><span class="tech-badge">Pytorch</span><span class="tech-badge">Pandas</span><span class="tech-badge">LSTM</span><span class="tech-badge">GRU</span></div>
+                                    </div>
+                                    <div class="card-links"><a href="https://github.com/qiuyu-ren/ML-model" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a></div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                    <div class="card animate-on-scroll">
-                        <div class="card-badge">Winner</div>
-                        <div class="card-content">
-                             <div class="card-body">
-                                <h3 class="card-title">Hackathon: Traveling Student Problem</h3>
-                                <p>Our tool provides an optimized route planner designed to help users navigate multiple stops efficiently. By using geolocation data, it calculates the best possible route, minimizing travel time and distance.</p>
-                                 <div class="card-tech"><span class="tech-badge">OpenStreetView</span><span class="tech-badge">Melissa API</span><span class="tech-badge">Python</span></div>
-                            </div>
-                            <div class="card-links"><a href="http://yashdeole.me/Travelling-Student-Problem/" class="card-link" target="_blank"><i class="fas fa-external-link-alt" target="_blank"></i> Live Demo</a><a href="https://devpost.com/software/the-traveling-student-problem" class="card-link" target="_blank"><i class="fas fa-external-link-alt"></i>Hackathon</a></div>
-                        </div>
-                    </div>
-                    <div class="card animate-on-scroll">
-                        <div class="card-content">
-                            <div class="card-body">
-                                <h3 class="card-title">Global Childhood Immunization</h3>
-                                <p>This project investigates global patterns of childhood immunization coverage, focusing on identifying inequalities and understanding their determinants. </p>
-                                <div class="card-tech"><span class="tech-badge">R</span><span class="tech-badge">Multivariable Statistics</span><span class="tech-badge">WHO Data</span></div>
-                            </div>
-                             <div class="card-links"><a href="https://github.com/Yash5320/Childhood_Immunization" class="card-link" target="_blank"><i class="fab fa-github" ></i> GitHub</a><a href="https://prezi.com/view/z7tPVH25avFMDa5GJLQi/" class="card-link" target="_blank"><i class="fas fa-external-link-alt"></i>Presentation</a></div>
-                        </div>
-                    </div>
+                    <button class="carousel-arrow next" id="next-project" aria-label="Next project">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -125,7 +145,23 @@
             </div>
         </section>
 
-        <section id="fitness" style="background-color: var(--surface-color);">
+
+<section id="contact" style="background-color: var(--surface-color);">
+            <div class="container contact-content">
+                <h2 class="section-title animate-on-scroll">Let's Connect</h2>
+                <p class="animate-on-scroll">I'm passionate about leveraging data to solve challenging problems. If you have an interesting project or opportunity, I'd love to hear from you.</p>
+                
+                <div class="social-links animate-on-scroll">
+                    <a href="mailto:deole2002@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://github.com/Yash5320" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
+                </div>
+
+                <a href="mailto:deole2002@gmail.com" class="email-link animate-on-scroll">deole2002@gmail.com</a>
+                
+            </div>
+        </section>
+
+        <section id="fitness">
             <div class="container">
                 <h2 class="section-title animate-on-scroll">Fitness Journey</h2>
                 <div class="fitness-grid">
@@ -141,22 +177,6 @@
                         <p>Mastering complex movements like the <strong>muscle-up</strong> and achieving milestones like <strong>weighted dips with +50kg</strong> are testaments to this philosophy.</p>
                     </div>
                 </div>
-            </div>
-        </section>
-
-<section id="contact">
-            <div class="container contact-content">
-                <h2 class="section-title animate-on-scroll">Let's Connect</h2>
-                <p class="animate-on-scroll">I'm passionate about leveraging data to solve challenging problems. If you have an interesting project or opportunity, I'd love to hear from you.</p>
-                
-                <div class="social-links animate-on-scroll">
-                    <a href="mailto:deole2002@gmail.com" class="social-link" title="Email"><i class="fas fa-envelope"></i></a>
-                    <a href="https://github.com/Yash5320" target="_blank" class="social-link" title="GitHub"><i class="fab fa-github"></i></a>
-                </div>
-
-                <!-- === NEWLY ADDED EMAIL TEXT === -->
-                <a href="mailto:deole2002@gmail.com" class="email-link animate-on-scroll">deole2002@gmail.com</a>
-                
             </div>
         </section>
     </main>
