@@ -76,8 +76,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const centerX = rect.width / 2;
             const centerY = rect.height / 2;
 
-            const rotateX = ((y - centerY) / centerY) * -16;
-            const rotateY = ((x - centerX) / centerX) * 16;
+            const rotateX = ((y - centerY) / centerY) * -9;
+            const rotateY = ((x - centerX) / centerX) * 9;
             
             // --- FIX --- Removed the scale3d() function from this line
             card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
