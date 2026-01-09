@@ -582,3 +582,135 @@ footer { text-align: center; padding: 2rem 0; border-top: 1px solid var(--border
     section { padding: 60px 0; }
     .container { padding: 0 15px; }
 }
+
+/* --- ENHANCED GRID RESUME --- */
+
+.resume-header-centered {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 2.5rem;
+}
+.resume-header-centered .section-title {
+    margin-bottom: 2rem; /* Reduced from 4rem */
+}
+/* Ensure the button has proper spacing below the underlined title */
+.resume-header-centered .btn-pdf-link {
+    margin-top: 0.5rem; /* Space below the underline */
+    background-color: var(--primary-color);
+    color: #fff;
+    padding: 0.7rem 1.6rem;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05rem;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.resume-header-centered .btn-pdf-link:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0, 170, 255, 0.3);
+    background-color: #33bbff;
+}
+
+.resume-top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Centers button with title */
+    margin-bottom: 3rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.section-title-main {
+    font-size: 2.2rem;
+    margin: 0;
+    font-weight: 800;
+}
+
+
+.resume-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    text-align: left; /* Keep the list items left-aligned for readability */
+}
+.col-heading {
+    color: var(--primary-color);
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1rem;
+}
+
+.entry-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+}
+
+.entry-icon {
+    color: var(--primary-color);
+    width: 1.2rem;
+    text-align: center;
+}
+
+.entry-content {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1;
+    align-items: baseline;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    padding-bottom: 0.4rem;
+}
+
+.entry-title { color: #fff; font-weight: 700; font-size: 0.95rem; }
+.entry-loc { color: var(--text-secondary); font-weight: 400; }
+.entry-date { color: var(--text-secondary); font-size: 0.85rem; font-variant-numeric: tabular-nums; }
+
+/* --- SKILLS CHIPS --- */
+.skills-four-col {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+}
+
+.skill-group h4 {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    border-left: 2px solid var(--primary-color);
+    padding-left: 8px;
+}
+
+.chip-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.chip-container span {
+    background: rgba(0, 170, 255, 0.1);
+    border: 1px solid rgba(0, 170, 255, 0.2);
+    color: #fff;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    white-space: nowrap;
+}
+
+/* Responsive Scaling */
+@media (max-width: 992px) {
+    .resume-grid, .skills-four-col { grid-template-columns: 1fr 1fr; gap: 2rem; }
+}
+
+@media (max-width: 600px) {
+    .resume-grid, .skills-four-col { grid-template-columns: 1fr; }
+    .resume-top-bar { flex-direction: column; gap: 1.5rem; text-align: center; }
+}
